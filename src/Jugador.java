@@ -41,6 +41,7 @@ public class Jugador {
         mano.add(monton.cogerCarta());
     }
 
+    //Esto hay que revisarlo, debería devolver carta?
     public void usarCarta(Carta carta){
         if (!mano.contains(carta)){
             System.out.println("No tienes esa carta");
