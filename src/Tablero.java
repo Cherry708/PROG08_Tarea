@@ -38,6 +38,10 @@ public class Tablero {
         Collections.shuffle(tablero);
     }
 
+    public boolean estaVacio(){
+        return tablero.isEmpty();
+    }
+
     @Override
     public String toString() {
         return "Tablero{" +
