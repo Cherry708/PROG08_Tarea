@@ -17,7 +17,7 @@ public class Monton {
     //LAS CARTAS VAN DIRECTAS AL MONTON O EL MONTON EMPIEZA VACÍO? HABRÁ QUE RELLENAR EL MONTÓN Y MIENTRAS DAR COLOR Y NÚMERO A LAS CARTAS?
 
     /**
-     * Constructor para Monton
+     * Método constructor para Monton que inicializa el stack
      *
      */
     public Monton() {
@@ -41,9 +41,23 @@ public class Monton {
     }
 
     /**
+     * Método longitud que nos permite conocer el tamaño del stack
+     * @return devuelve el tamaño del stack
+     */
+    public int longitud(){
+        return monton.size();
+    }
+
+    /**
      * Método barajar, que coloca las cartas en posiciones aleatorias de la pila usando el método .shuffle()
      */
     public void barajar(){
         Collections.shuffle(monton);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Monton: " + monton;
     }
 }

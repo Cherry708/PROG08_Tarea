@@ -17,6 +17,10 @@ public class Tablero {
     //Atributos
     Stack<Carta> tablero;
 
+    /**
+     * Método constructor para Tablero que inicializa el stack
+     *
+     */
     public Tablero() {
         tablero = new Stack<>();
     }
@@ -32,5 +36,12 @@ public class Tablero {
 
     public void barajar(){
         Collections.shuffle(tablero);
+    }
+
+    @Override
+    public String toString() {
+        return "Tablero{" +
+                "tablero=" + tablero +
+                '}';
     }
 }

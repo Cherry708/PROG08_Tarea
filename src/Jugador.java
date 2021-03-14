@@ -16,11 +16,14 @@ public class Jugador {
     public Jugador(String nombre, int numeroCartas) {
         this.nombre = nombre;
         this.numeroCartas = numeroCartas;
+        mano = new ArrayList<>();
     }
 
     /**
      * Puede que solo sea necesario el getter de nombre ya que el setter no se utilizará y los getter y setter
      * de cartas no serán necesarios ya que en realidad se hará referencia al tamaño de la mano, que son las cartas
+     *
+     * Falso. Mejor usar los métodos, hay que encapsular. No debería usar mano.metodoArraList() sino encapsularlo
      */
 
     /**
@@ -41,16 +44,24 @@ public class Jugador {
         mano.add(monton.cogerCarta());
     }
 
-    //Esto hay que revisarlo, debería devolver carta?
+    //Esto hay que revisarlo, debería devolver carta? Sí
     public void usarCarta(Carta carta){
-        if (!mano.contains(carta)){
+        /*
+        if (!mano.contains(carta)){ //Esto parece que funciona
             System.out.println("No tienes esa carta");
-        } else mano.remove(carta); //HABRÁ QUE PONER ESA CARTA EN EL TABLERO, CÓMO?
+        } else mano.remove(carta); //HABRÁ QUE PONER ESA CARTA EN EL TABLERO, CÓMO? Devolviendola, está hecho
+        */
+        //return carta; //Parece que siempre se va a poner, hace falta una alternativa a esto
+        mano.remove(carta);
+    }
+
+    public boolean contieneCarta(Carta carta){
+        return mano.contains(carta);
     }
 
     public String mostrarMano(){
         return mano.toString();
     }
 
-
 }
+
