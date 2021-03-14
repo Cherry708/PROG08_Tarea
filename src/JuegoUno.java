@@ -58,6 +58,7 @@ public class JuegoUno {
         System.out.println();
         //carta es un único objeto que siempre rellena el usuario con los datos introducidos
 
+        //while boolean jugada = true
         //Preguntamos al usuario por la carta a usar
         System.out.println("Color de la carta a usar: ");
         inputColor = inputJugador.next();
@@ -74,7 +75,9 @@ public class JuegoUno {
             tablero.ponerCarta(carta);
             System.out.println("Sí tenías la carta");
             System.out.println(jugador1.getNumeroCartas());
+            //jugada = false;
         } else System.out.println("No tienes esa carta en la mano :(");
+        //jugada sigue siendo true y repetimos
 
         System.out.println(tablero.toString());
 
