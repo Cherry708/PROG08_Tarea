@@ -61,6 +61,6 @@ public class Carta {
 
     @Override
     public String toString() {
-        return "{Carta: " + "color = " +color+ ", " + "número = " +numero+"}";
+        return "{Carta: " +color+ ", "+numero+"}";
     }
 }

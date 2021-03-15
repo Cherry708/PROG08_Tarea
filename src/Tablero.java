@@ -45,9 +45,5 @@ public class Tablero {
         return tablero.peek();
     }
 
-    @Override
-    public String toString() {
-        return "Tablero" +
-                tablero;
-    }
+
 }

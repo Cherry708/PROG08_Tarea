@@ -11,11 +11,9 @@ public class Jugador {
      * Método constructor para Jugador, asignará los atributos nombre y número de cartas a los valores suministrados
      *
      * @param nombre Nombre será el identificador del jugador
-     * @param numeroCartas NumeroCartas será el número de cartas inicial del que dispondrá el jugador
      */
-    public Jugador(String nombre, int numeroCartas) {
+    public Jugador(String nombre) {
         this.nombre = nombre;
-        this.numeroCartas = numeroCartas;
         mano = new ArrayList<>();
     }
 
@@ -46,6 +44,7 @@ public class Jugador {
     public void robarCarta(Monton monton){
         //monton.cogerCarta usa el método .pop() que devuelve la última carta del montón
         mano.add(monton.cogerCarta());
+        numeroCartas++;
     }
 
     //Esto hay que revisarlo, debería devolver carta? Sí
