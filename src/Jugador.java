@@ -5,7 +5,7 @@ public class Jugador {
     //Atributos
     private String nombre;
     private int numeroCartas;
-    ArrayList<Carta> mano;
+    private ArrayList<Carta> mano;
 
     /**
      * Método constructor para Jugador, asignará los atributos nombre y número de cartas a los valores suministrados
@@ -38,6 +38,10 @@ public class Jugador {
         return numeroCartas;
     }
 
+    public void setNumeroCartas(int numeroCartas) {
+        this.numeroCartas = numeroCartas;
+    }
+
     //La carta a robar debe ser cogida del monton, así?
     public void robarCarta(Monton monton){
         //monton.cogerCarta usa el método .pop() que devuelve la última carta del montón
@@ -45,18 +49,17 @@ public class Jugador {
     }
 
     //Esto hay que revisarlo, debería devolver carta? Sí
-    public void usarCarta(Carta carta){
-        /*
-        if (!mano.contains(carta)){ //Esto parece que funciona
-            System.out.println("No tienes esa carta");
-        } else mano.remove(carta); //HABRÁ QUE PONER ESA CARTA EN EL TABLERO, CÓMO? Devolviendola, está hecho
-        */
-        //return carta; //Parece que siempre se va a poner, hace falta una alternativa a esto
-        mano.remove(carta);
+    public void usarCarta(int indice){
+        mano.remove(indice);
+        numeroCartas--;
     }
 
-    public boolean contieneCarta(Carta carta){
-        return mano.contains(carta);
+    public ArrayList<Carta> getMano() {
+        return mano;
+    }
+
+    public void setMano(ArrayList<Carta> mano) {
+        this.mano = mano;
     }
 
     public String mostrarMano(){

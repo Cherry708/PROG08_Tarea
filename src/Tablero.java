@@ -1,4 +1,3 @@
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -15,7 +14,7 @@ public class Tablero {
     //POR QUÉ HAY QUE BARAJAR EL TABLERO?
 
     //Atributos
-    Stack<Carta> tablero;
+    private Stack<Carta> tablero;
 
     /**
      * Método constructor para Tablero que inicializa el stack
@@ -42,10 +41,13 @@ public class Tablero {
         return tablero.isEmpty();
     }
 
+    public Carta ultimaCarta(){
+        return tablero.peek();
+    }
+
     @Override
     public String toString() {
-        return "Tablero{" +
-                "tablero=" + tablero +
-                '}';
+        return "Tablero" +
+                tablero;
     }
 }
