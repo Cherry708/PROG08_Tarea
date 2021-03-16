@@ -48,7 +48,11 @@ public class Jugador {
     }
 
     //Esto hay que revisarlo, debería devolver carta? Sí
-    public void usarCarta(int indice){
+    public Carta usarCarta(int indice){
+        return mano.get(indice);
+    }
+
+    public void quitarCarta(int indice){
         mano.remove(indice);
         numeroCartas--;
     }

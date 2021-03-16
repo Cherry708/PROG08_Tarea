@@ -29,7 +29,7 @@ public class Monton {
      * Método cogerCarta, que devuelve la última carta de la pila usando el método .pop()
      * @return carta
      */
-    public Carta cogerCarta() throws EmptyStackException {
+    public Carta cogerCarta() {
         return monton.pop();
     }
 
