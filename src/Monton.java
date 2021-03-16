@@ -1,4 +1,5 @@
 import java.util.Collections;
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class Monton {
@@ -28,7 +29,7 @@ public class Monton {
      * Método cogerCarta, que devuelve la última carta de la pila usando el método .pop()
      * @return carta
      */
-    public Carta cogerCarta(){
+    public Carta cogerCarta() throws EmptyStackException {
         return monton.pop();
     }
 
@@ -55,6 +56,9 @@ public class Monton {
         Collections.shuffle(monton);
     }
 
+    public boolean estaVacio(){
+        return monton.isEmpty();
+    }
 
     @Override
     public String toString() {

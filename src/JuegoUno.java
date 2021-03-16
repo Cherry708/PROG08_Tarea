@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class JuegoUno {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         //Declaración de objetos
         Monton monton;
@@ -31,14 +31,15 @@ public class JuegoUno {
 
         generarMonton(monton, NUM_COLOR, NUM_CARTA);
 
-
+        /*
         System.out.println("Longitud del montón y el montón: ");
         System.out.println(monton.longitud());
         System.out.println(monton.toString());
+         */
 
 
         //Rellenamos la carta de los jugadores
-        for (int contador = 0; contador<CARTAS_INICIALES; contador++){
+        for (int contador = 0; contador < CARTAS_INICIALES; contador++) {
             jugador1.robarCarta(monton);
             jugador2.robarCarta(monton);
         }
@@ -75,10 +76,7 @@ public class JuegoUno {
             if (turno) {
                 jugada = true;
 
-                System.out.println("Es el turno de: " + jugador1.getNombre());
-                System.out.println("Esta es tu mano con "+jugador1.getNumeroCartas()+" carta(s): ");
-                System.out.println(jugador1.mostrarMano());
-                System.out.println();
+                mostrarTurno(jugador1);
 
                 try {
                     System.out.println("Selecciona una opción: ");
@@ -91,90 +89,77 @@ public class JuegoUno {
 
                     if (inputNumero == 0) {
                         if (!tablero.estaVacio()) {
-                            System.out.println("--- --- --- ---");
-                            System.out.println("Este es el tablero: ");
-                            System.out.println(tablero.ultimaCarta());
-                            System.out.println("--- --- --- ---");
-                            System.out.println();
-                        } else{
+                            mostrarTalbero(tablero);
+                        } else {
                             System.out.println("El tablero está vacío. Prueba a poner una carta.");
                             System.out.println();
                         }
                     } else if (inputNumero == 1) { //Poner carta
-                            while (jugada) {
-                                try {
-                                    System.out.println("Escoge la carta indicando su posición en tu mano: ");
+                        while (jugada) {
+                            try {
+                                System.out.println("Escoge la carta indicando su posición en tu mano: ");
 
-                                    inputLinea = inputJugador.next();
-                                    inputNumero = Integer.parseInt(inputLinea);
-                                    inputNumero--;
-                                    if (tablero.estaVacio()) {
-                                        tablero.ponerCarta(jugador1.getMano().get(inputNumero));
-                                        jugador1.usarCarta(inputNumero);
-                                        System.out.println(jugador1.getNombre()+" ha colocado una carta.");
-                                        System.out.println();
-                                        System.out.println("--- --- --- ---");
-                                        System.out.println("Este es el tablero: ");
-                                        System.out.println(tablero.ultimaCarta());
-                                        System.out.println("--- --- --- ---");
-                                        System.out.println();
-                                        jugada = false;
-                                        turno = false;
-                                    } else if (jugador1.getMano().get(inputNumero).getColor().equals(tablero.ultimaCarta().getColor()) |
-                                            jugador1.getMano().get(inputNumero).getNumero() == (tablero.ultimaCarta().getNumero())) {
-                                        tablero.ponerCarta(jugador1.getMano().get(inputNumero));
-                                        jugador1.usarCarta(inputNumero);
-                                        System.out.println(jugador1.getNombre()+" ha colocado una carta.");
-                                        System.out.println();
-                                        System.out.println("--- --- --- ---");
-                                        System.out.println("Este es el tablero: ");
-                                        System.out.println(tablero.ultimaCarta());
-                                        System.out.println("--- --- --- ---");
-                                        System.out.println();
-                                        jugada = false;
-                                        turno = false;
-                                    } else {
-                                        System.out.println("Esa carta no es compatible, prueba con otra o roba.");
-                                        System.out.println();
-                                        System.out.println("--- --- --- ---");
-                                        System.out.println("Este es el tablero: ");
-                                        System.out.println(tablero.ultimaCarta());
-                                        System.out.println("--- --- --- ---");
-                                        System.out.println();
-                                        jugada = false;
-                                    }
-
-                                    if (jugador1.getNumeroCartas() == 0) {
-                                        System.out.println(jugador1.getNombre() + " se ha quedado sin cartas y ha ganado.");
-                                        partida = false;
-                                    }
-                                } catch (IndexOutOfBoundsException e) {
-                                    System.out.println("Error de entrada. La posición introducida no es válida.");
-                                } catch (NumberFormatException e){
-                                    System.out.println("Error de entrada. Debes introducir un número.");
+                                inputLinea = inputJugador.next();
+                                inputNumero = Integer.parseInt(inputLinea);
+                                inputNumero--;
+                                if (tablero.estaVacio()) {
+                                    tablero.ponerCarta(jugador1.getMano().get(inputNumero));
+                                    jugador1.usarCarta(inputNumero);
+                                    System.out.println(jugador1.getNombre() + " ha colocado una carta.");
+                                    System.out.println();
+                                    mostrarTalbero(tablero);
+                                    jugada = false;
+                                    turno = false;
+                                } else if (jugador1.getMano().get(inputNumero).getColor().equals(tablero.ultimaCarta().getColor()) |
+                                        jugador1.getMano().get(inputNumero).getNumero() == (tablero.ultimaCarta().getNumero())) {
+                                    tablero.ponerCarta(jugador1.getMano().get(inputNumero));
+                                    jugador1.usarCarta(inputNumero);
+                                    System.out.println(jugador1.getNombre() + " ha colocado una carta.");
+                                    System.out.println();
+                                    mostrarTalbero(tablero);
+                                    jugada = false;
+                                    turno = false;
+                                } else {
+                                    System.out.println("Esa carta no es compatible, prueba con otra o roba.");
+                                    System.out.println();
+                                    mostrarTalbero(tablero);
+                                    jugada = false;
                                 }
-                            }
-                    } else if (inputNumero == 2) {
-                        jugador1.robarCarta(monton);
-                        System.out.println("Has cogido una carta y esta es tu mano: ");
-                        System.out.println(jugador1.mostrarMano());
-                        System.out.println();
 
-                    } else if (inputNumero == 3){
+                                if (jugador1.getNumeroCartas() == 0) {
+                                    System.out.println(jugador1.getNombre() + " se ha quedado sin cartas y ha ganado.");
+                                    partida = false;
+                                }
+                            } catch (IndexOutOfBoundsException e) {
+                                System.out.println("Error de entrada. La posición introducida no es válida.");
+                            } catch (NumberFormatException e) {
+                                System.out.println("Error de entrada. Debes introducir un número.");
+                            }
+                        }
+                    } else if (inputNumero == 2) {
+
+                        if (monton.estaVacio()){
+                            //monton.ponerCarta(tablero.rellenarMonton());
+                            generarMonton(monton, NUM_COLOR, NUM_CARTA);
+                        } else {
+                            jugador1.robarCarta(monton);
+                            System.out.println("Has cogido una carta y esta es tu mano: ");
+                            System.out.println(jugador1.mostrarMano());
+                            System.out.println();
+                        }
+
+                    } else if (inputNumero == 3) {
                         System.out.println("Terminando la partida...");
                         partida = false;
                     } else System.out.println("Error. Selecciona una opción válida.");
-                } catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     System.out.println("Error de entrada, introduce un número.");
                     System.out.println();
                 }
             } else if (!turno) {
                 jugada = true;
 
-                System.out.println("Es el turno de: " + jugador2.getNombre());
-                System.out.println("Esta es tu mano con "+jugador2.getNumeroCartas()+" carta(s): ");
-                System.out.println(jugador2.mostrarMano());
-                System.out.println();
+                mostrarTurno(jugador2);
 
                 try {
                     System.out.println("Selecciona una opción: ");
@@ -185,17 +170,13 @@ public class JuegoUno {
                     inputLinea = inputJugador.next();
                     inputNumero = Integer.parseInt(inputLinea);
 
-                    if (inputNumero == 0){
-                      if(!tablero.estaVacio()){
-                          System.out.println("--- --- --- ---");
-                          System.out.println("Este es el tablero: ");
-                          System.out.println(tablero.ultimaCarta());
-                          System.out.println("--- --- --- ---");
-                          System.out.println();
-                      } else {
-                          System.out.println("El tablero está vacío. Prueba a poner una carta.");
-                          System.out.println();
-                      }
+                    if (inputNumero == 0) {
+                        if (!tablero.estaVacio()) {
+                            mostrarTalbero(tablero);
+                        } else {
+                            System.out.println("El tablero está vacío. Prueba a poner una carta.");
+                            System.out.println();
+                        }
                     } else if (inputNumero == 1) { //Poner carta
                         while (jugada) {
                             try {
@@ -207,36 +188,24 @@ public class JuegoUno {
                                 if (tablero.estaVacio()) {
                                     tablero.ponerCarta(jugador2.getMano().get(inputNumero));
                                     jugador2.usarCarta(inputNumero);
-                                    System.out.println(jugador2.getNombre()+" ha colocado una carta.");
+                                    System.out.println(jugador2.getNombre() + " ha colocado una carta.");
                                     System.out.println();
-                                    System.out.println("--- --- --- ---");
-                                    System.out.println("Este es el tablero: ");
-                                    System.out.println(tablero.ultimaCarta());
-                                    System.out.println("--- --- --- ---");
-                                    System.out.println();
+                                    mostrarTalbero(tablero);
                                     jugada = false;
                                     turno = true;
                                 } else if (jugador2.getMano().get(inputNumero).getColor().equals(tablero.ultimaCarta().getColor()) |
                                         jugador2.getMano().get(inputNumero).getNumero() == (tablero.ultimaCarta().getNumero())) {
                                     tablero.ponerCarta(jugador2.getMano().get(inputNumero));
                                     jugador2.usarCarta(inputNumero);
-                                    System.out.println(jugador2.getNombre()+" ha colocado una carta.");
+                                    System.out.println(jugador2.getNombre() + " ha colocado una carta.");
                                     System.out.println();
-                                    System.out.println("--- --- --- ---");
-                                    System.out.println("Este es el tablero: ");
-                                    System.out.println(tablero.ultimaCarta());
-                                    System.out.println("--- --- --- ---");
-                                    System.out.println();
+                                    mostrarTalbero(tablero);
                                     jugada = false;
                                     turno = true;
                                 } else {
                                     System.out.println("Esa carta no es compatible, prueba con otra o roba.");
                                     System.out.println();
-                                    System.out.println("--- --- --- ---");
-                                    System.out.println("Este es el tablero: ");
-                                    System.out.println(tablero.ultimaCarta());
-                                    System.out.println("--- --- --- ---");
-                                    System.out.println();
+                                    mostrarTalbero(tablero);
                                     jugada = false;
                                 }
 
@@ -246,26 +215,46 @@ public class JuegoUno {
                                 }
                             } catch (IndexOutOfBoundsException e) {
                                 System.out.println("Error de entrada. La posición introducida no es válida.");
-                            } catch (NumberFormatException e){
+                            } catch (NumberFormatException e) {
                                 System.out.println("Error de entrada. Debes introducir un número.");
                             }
                         }
                     } else if (inputNumero == 2) {
-                        jugador2.robarCarta(monton);
-                        System.out.println("Has cogido una carta y esta es tu mano: ");
-                        System.out.println(jugador2.mostrarMano());
-                        System.out.println();
 
-                    } else if (inputNumero == 3){
+                        if (monton.estaVacio()){
+                            generarMonton(monton, NUM_COLOR, NUM_CARTA);
+                        } else {
+                            jugador2.robarCarta(monton);
+                            System.out.println("Has cogido una carta y esta es tu mano: ");
+                            System.out.println(jugador2.mostrarMano());
+                            System.out.println();
+                        }
+
+                    } else if (inputNumero == 3) {
                         System.out.println("Terminando la partida...");
                         partida = false;
                     } else System.out.println("Error. Selecciona una opción válida.");
-                } catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     System.out.println("Error de entrada, introduce un número.");
                     System.out.println();
                 }
             }
         }
+    }
+
+    private static void mostrarTurno(Jugador jugador1) {
+        System.out.println("Es el turno de: " + jugador1.getNombre());
+        System.out.println("Esta es tu mano con " + jugador1.getNumeroCartas() + " carta(s): ");
+        System.out.println(jugador1.mostrarMano());
+        System.out.println();
+    }
+
+    private static void mostrarTalbero(Tablero tablero) {
+        System.out.println("--- --- --- ---");
+        System.out.println("Este es el tablero: ");
+        System.out.println(tablero.ultimaCarta());
+        System.out.println("--- --- --- ---");
+        System.out.println();
     }
 
     /*
@@ -275,29 +264,29 @@ public class JuegoUno {
     private static void generarMonton(Monton monton, int NUM_COLOR, int NUM_CARTA) {
 
         //Rellenar monton con cartas azules, se rellena el stack con 18 cartas del 1 al 9 de color azul
-        for (int color = 0; color<NUM_COLOR; color++){
-            for (int numero = 1; numero<NUM_CARTA; numero++){
+        for (int color = 0; color < NUM_COLOR; color++) {
+            for (int numero = 1; numero < NUM_CARTA; numero++) {
                 monton.ponerCarta(new Carta("azul", numero));
             }
         }
 
         //Rellenar monton con cartas rojas
-        for (int color = 0; color<NUM_COLOR; color++){
-            for (int numero = 1; numero<NUM_CARTA; numero++){
+        for (int color = 0; color < NUM_COLOR; color++) {
+            for (int numero = 1; numero < NUM_CARTA; numero++) {
                 monton.ponerCarta(new Carta("rojo", numero));
             }
         }
 
         //Rellenar monton con cartas amarillas
-        for (int color = 0; color<NUM_COLOR; color++){
-            for (int numero = 1; numero<NUM_CARTA; numero++){
+        for (int color = 0; color < NUM_COLOR; color++) {
+            for (int numero = 1; numero < NUM_CARTA; numero++) {
                 monton.ponerCarta(new Carta("amarillo", numero));
             }
         }
 
         //Rellenar monton con cartas verdes
-        for (int color = 0; color<NUM_COLOR; color++){
-            for (int numero = 1; numero<NUM_CARTA; numero++){
+        for (int color = 0; color < NUM_COLOR; color++) {
+            for (int numero = 1; numero < NUM_CARTA; numero++) {
                 monton.ponerCarta(new Carta("verde", numero));
             }
         }
