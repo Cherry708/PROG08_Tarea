@@ -15,8 +15,6 @@ public class Monton {
     //Atributos
     private Stack<Carta> monton;
 
-    //LAS CARTAS VAN DIRECTAS AL MONTON O EL MONTON EMPIEZA VACÍO? HABRÁ QUE RELLENAR EL MONTÓN Y MIENTRAS DAR COLOR Y NÚMERO A LAS CARTAS?
-
     /**
      * Método constructor para Monton que inicializa el stack
      *

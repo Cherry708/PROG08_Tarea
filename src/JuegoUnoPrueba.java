@@ -39,7 +39,6 @@ public class JuegoUnoPrueba {
         while (partida) {
 
             if (turno) {
-                //De aquí hasta el final del turno debe ser una función
                 jugada = true;
 
                 mostrarTurno(jugador1);

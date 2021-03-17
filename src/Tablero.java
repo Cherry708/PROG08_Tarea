@@ -10,8 +10,6 @@ public class Tablero {
      * @version 1
      */
 
-    //POR QUÉ HAY UN METODO RELLENAR MONTON? PARA MOVER LAS CARTAS DEL TABLERO AL MONTON O PARA RELLENAR EL TABLERO?
-    //POR QUÉ HAY QUE BARAJAR EL TABLERO?
 
     //Atributos
     private Stack<Carta> tablero;
@@ -28,14 +26,17 @@ public class Tablero {
         tablero.push(carta);
     }
 
-    //Hay 72 cartas, 9 por 4 colores, pero los colores se repiten 2 veces
+    /*
     public Carta rellenarMonton(){
         return tablero.pop();
     }
+    */
 
+    /*
     public void barajar(){
         Collections.shuffle(tablero);
     }
+    */
 
     public boolean estaVacio(){
         return tablero.isEmpty();
