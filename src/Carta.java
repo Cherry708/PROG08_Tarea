@@ -1,16 +1,18 @@
 public class Carta {
 
     /**
-     * Clase Carta, contiene los atributos y métodos de las cartas del JuegoUno
+     * Clase Carta, contiene los atributos y métodos de las cartas del JuegoUno.
      *
-     * @author Rubén Serrano Cano
-     * @version 1
+     * @author Rubén Serrano Cano.
+     * @version 0
+     * @date 19/03/21 dd/mm/aa
      */
 
     //Atributos
     private String color = "";
     private int numero;
 
+    //Métodos
 
     /**
      * Constructor para Carta, crea una carta con los parámetros de entrada suministrados
