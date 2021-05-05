@@ -14,7 +14,7 @@ public class JuegoUno {
         //Declaración e inicialización de variables
         final int CARTAS_INICIALES = 4;
         final int NUM_COLOR = 2;
-        final int NUM_CARTA = 10;
+        final int NUM_CARTA = 9;
         int inputNumero = 0;
         boolean turno = true;
         boolean partida = true;
@@ -313,28 +313,28 @@ public class JuegoUno {
 
         //Rellenar monton con cartas azules, se rellena el stack con 18 cartas del 1 al 9 de color azul
         for (int color = 0; color < NUM_COLOR; color++) {
-            for (int numero = 1; numero < NUM_CARTA; numero++) {
+            for (int numero = 1; numero <= NUM_CARTA; numero++) {
                 monton.ponerCarta(new Carta("azul", numero));
             }
         }
 
         //Rellenar monton con cartas rojas
         for (int color = 0; color < NUM_COLOR; color++) {
-            for (int numero = 1; numero < NUM_CARTA; numero++) {
+            for (int numero = 1; numero <= NUM_CARTA; numero++) {
                 monton.ponerCarta(new Carta("rojo", numero));
             }
         }
 
         //Rellenar monton con cartas amarillas
         for (int color = 0; color < NUM_COLOR; color++) {
-            for (int numero = 1; numero < NUM_CARTA; numero++) {
+            for (int numero = 1; numero <= NUM_CARTA; numero++) {
                 monton.ponerCarta(new Carta("amarillo", numero));
             }
         }
 
         //Rellenar monton con cartas verdes
         for (int color = 0; color < NUM_COLOR; color++) {
-            for (int numero = 1; numero < NUM_CARTA; numero++) {
+            for (int numero = 1; numero <= NUM_CARTA; numero++) {
                 monton.ponerCarta(new Carta("verde", numero));
             }
         }
